@@ -1,5 +1,6 @@
 import axios from "axios";
 import { nanoid } from "nanoid";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const Form = () => {
@@ -10,19 +11,13 @@ const Form = () => {
 
   const handleSubmit = async () => {
 
-    if (!slug) {
-        let id = nanoid();
-        id = id.toLowerCase().slice(0, 2);
-        setSlug(id);
-    } 
-
     axios
         .post(`/api/create/${slug}`, {
             url: url,
             slug: slug,
         })
         .then(function (response) {
-            setMessage(response.data.message);
+            setMessage(`/${response.data.slug}`);
             setSlug("");
         })
         .catch(function (error) {
@@ -34,52 +29,51 @@ const Form = () => {
     };
 
     useEffect(() => {
-        if (!slug) {
-            let id = nanoid();
-            id = id.toLowerCase().slice(0, 2);
-            setSlug(id);
-        }
+      if (!slug) {
+        const characters = 'abcdefghiklmnopqrstuvwxyz_-24689';
+        let id = "";
+
+        while (id.length < 4) {
+          id += characters[Math.floor(Math.random() * characters.length)];
+        } 
+
+        setSlug(id);
+    } 
     }, [handleSubmit]);
 
   return (
-    <div class="w-full max-w-lg max-h-lg">
-      <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-        <div class="mb-4">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="url">
-            url
-          </label>
+    <div className="w-full max-w-lg max-h-lg">
+      <form className="bg-base-300 shadow-2xl shadow-base-100 rounded px-8 pt-6 pb-8 mb-4">
+        <div className="mb-4 mt-2">
           <input
-            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline bg-base-100"
             id="url"
             type="text"
-            placeholder="enter your url..."
+            placeholder="Paste your long URL"
             onChange={(e) => setURL(e.target.value)}
           />
         </div>
-        <div class="mb-6">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="slug">
-            slug
-          </label>
+        <div className="mb-6">
           <input
-            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-base-100"
             id="slug"
             type="text"
-            placeholder="enter your slug..."
+            placeholder="Enter your slug (optional)"
             onChange={(e) => setSlug(e.target.value)}
           />
         </div>
-        <div class="flex items-center justify-between">
+        <div className="flex items-center justify-between">
           <button
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
             type="button"
             onClick={handleSubmit}
           >
             Create!
           </button>
         </div>
-        <div className="p-4 font-semibold">
-            {message ? <h1>{message}</h1> : null}
-        </div>
+        {message ?<div className="flex justify-center pt-6 font-semibold">
+            <Link href={message}><h1 className="text-blue-400 hover:underline">{message} created successfully!</h1></Link>
+        </div> : null} 
       </form>
     </div>
   );

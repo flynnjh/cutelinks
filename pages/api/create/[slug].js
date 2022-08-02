@@ -23,6 +23,7 @@ export default async (req, res) => {
   });
 
   return res.status(200).json({
-    message: `${req.query.slug} with url ${req.body.url} successfully created!`,
+    url: `${data.url}`,
+    slug: `${data.slug}`
   });
 };

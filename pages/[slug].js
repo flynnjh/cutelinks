@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-export default function slug() {
+export default function Slug() {
 
   const [ error, setError ] = useState(false);
   const router = useRouter();
@@ -20,7 +20,6 @@ export default function slug() {
 
   useEffect(() => {
     if (router.isReady) {
-      console.log(router.query);
       const slug = router.query.slug;
       getSlug(slug);
     }
