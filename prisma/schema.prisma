@@ -13,6 +13,7 @@ datasource db {
 model shortLink {
   id  Int @id @default(autoincrement())
   createdAt DateTime @default(now())
+  ttl String @db.VarChar(2000)
 
   url String @db.VarChar(2000)
   slug String @unique

@@ -21,5 +21,5 @@ export default async (req, res) => {
     return;
   }
 
-  return res.status(200).json({"url": data.url, "slug": data.slug});
+  return res.status(200).json({"createdAt": data.createdAt, "ttl": data.ttl, "url": data.url, "slug": data.slug});
 };

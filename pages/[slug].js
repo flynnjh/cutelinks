@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import moment, { now } from "moment";
 
 export default function Slug() {
 
@@ -10,10 +11,16 @@ export default function Slug() {
   const getSlug = async (slug) => {
     await axios.get(`/api/${slug}`)
     .then(function (response) {
-      window.location.assign(response.data.url);
+      const currentTime = new Date().toISOString();
+      if (response.data.ttl < currentTime) {
+        axios.post(`/api/delete/${slug}`);
+        setError('Link Expired :(');
+      } else {
+        window.location.assign(response.data.url);
+      }
     })
     .catch(function (error) {
-      setError(error.response.data);
+      setError(error.response.data.message);
     })
   }
 
@@ -28,7 +35,7 @@ export default function Slug() {
     <div>
       {!error ? <h1>
         Redirecting...
-      </h1> : <h1>slug not found :(</h1>}
+      </h1> : <h1>{error}</h1>}
     </div>
   )
 }

@@ -30,7 +30,7 @@ export default function Home() {
 
     useEffect(() => {
       if (!slug) {
-        const characters = 'abcdefghiklmnopqrstuvwxyz_-24689';
+        const characters = 'abcdefghiklmnopqrstuvwxyz24689';
         let id = "";
 
         while (id.length < 4) {
@@ -43,12 +43,12 @@ export default function Home() {
 
 
   return (
-    <div className="flex h-screen justify-center place-items-center">
+    <div className="flex h-screen justify-center place-items-center bg-slate-900/60">
     <div className="w-full max-w-lg max-h-lg">
-      <form className="bg-base-300 shadow-2xl shadow-base-100 rounded px-8 pt-6 pb-8 mb-4">
+      <form className="bg-slate-700/20 ring-1 ring-inset ring-white/10 shadow-2xl rounded-2xl px-8 pt-6 pb-8 mb-4 backdrop-blur">
         <div className="mb-4 mt-2">
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline bg-base-100"
+            className="shadow rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline bg-base-100 ring-1 ring-inset ring-white/40"
             id="url"
             type="text"
             placeholder="Paste your long URL"
@@ -57,7 +57,7 @@ export default function Home() {
         </div>
         <div className="mb-6">
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-base-100"
+            className="shadow appearance-none rounded w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-base-100 ring-1 ring-inset ring-white/40"
             id="slug"
             type="text"
             placeholder="Enter your slug (optional)"
@@ -66,7 +66,7 @@ export default function Home() {
         </div>
         <div className="flex items-center justify-between">
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full ring-1 ring-inset ring-blue-500/50"
             type="button"
             onClick={handleSubmit}
           >
