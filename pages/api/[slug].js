@@ -21,5 +21,17 @@ export default async (req, res) => {
     return;
   }
 
-  return res.status(200).json({"createdAt": data.createdAt, "ttl": data.ttl, "url": data.url, "slug": data.slug});
+  const currentTime = new Date().toISOString();
+
+  if (data.ttl < currentTime) {
+    const deletedSlug = await prisma.shortLink.delete({
+      where: {
+          slug: req.query.slug
+      }
+    })
+    return res.status(400).json({"message": `${deletedSlug.slug} has been deleted :(`});
+  } else {
+    return res.status(200).json({"createdAt": data.createdAt, "ttl": data.ttl, "url": data.url, "slug": data.slug});
+  }
+
 };

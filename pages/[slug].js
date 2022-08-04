@@ -11,13 +11,7 @@ export default function Slug() {
   const getSlug = async (slug) => {
     await axios.get(`/api/${slug}`)
     .then(function (response) {
-      const currentTime = new Date().toISOString();
-      if (response.data.ttl < currentTime) {
-        axios.post(`/api/delete/${slug}`);
-        setError('Link Expired :(');
-      } else {
-        window.location.assign(response.data.url);
-      }
+      window.location.assign(response.data.url);
     })
     .catch(function (error) {
       setError(error.response.data.message);
