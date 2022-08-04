@@ -80,8 +80,11 @@ export default function Home() {
                 </h1>
               </a>
               </Link>
-                <h1 className="py-4">
-                  Your pin for this slug is '{info.pinReminder}'. Remember it if you want to delete your slug manually!
+                <h1 className="pt-4">
+                  Your pin for this slug is &apos;{info.pinReminder}&apos;.
+                </h1>
+                <h1 className="">
+                  You will need it if you want to manually delete your slug!
                 </h1>
             </div>
           ) : null}
