@@ -49,10 +49,10 @@ export default async (req, res) => {
   const ttl = moment().add(5, "hours").toISOString();
 
   if (!req.body.slug) {
-    const characters = "abcdefghiklmnopqrstuvwxyz24689";
+    const characters = "abcdefghiklmnopqrstuvwxyz";
     let id = "";
 
-    while (id.length < 3) {
+    while (id.length < 2) {
       id += characters[Math.floor(Math.random() * characters.length)];
     }
 
