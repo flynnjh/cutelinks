@@ -17,6 +17,7 @@ model shortLink {
 
   url String @db.VarChar(2000)
   slug String @unique
+  hashedPin String @db.VarChar(2000)
 
   @@index(slug)
 
