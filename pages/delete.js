@@ -32,7 +32,8 @@ export default function DeletePage() {
     <div className="flex flex-col h-screen justify-center place-items-center bg-slate-900/60">
       <div className="w-full max-w-lg max-h-lg">
         <form className="bg-slate-700/20 ring-1 ring-inset ring-white/10 shadow-2xl rounded-2xl px-8 pt-6 pb-8 mb-4">
-        <h1 className="flex justify-center text-4xl font-semibold text-slate-200/95 py-4">Delete your Cutelink :(</h1>
+        <h1 className="flex justify-center text-4xl font-semibold text-slate-200/95 py-4 break-all">Delete your Cutelink</h1>
+        <h1 className="flex justify-center text-2xl font-semibold text-slate-200/95 pb-4 break-all">:(</h1>
         <div className="flex flex-row text-lg justify-center font-bold text-sky-400/95 pb-4 gap-6 w-auto">
           <Link href="/"><a className="hover:underline">Create</a></Link>
           <Link href="/delete"><a className="hover:underline">Delete</a></Link>
