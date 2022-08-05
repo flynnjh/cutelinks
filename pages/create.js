@@ -37,9 +37,9 @@ export default function Home() {
     <Head>
       <title>Cutelinks</title>
     </Head>
-    <div className="flex flex-col h-screen justify-center place-items-center bg-slate-900/60">
+    <div className="flex flex-col h-screen justify-center place-items-center md:bg-slate-900/60 bg-[#1E2536]">
       <div className="w-full max-w-lg max-h-lg">
-        <form className="bg-slate-700/20 ring-1 ring-inset ring-white/10 shadow-2xl rounded-2xl px-8 pt-6 pb-8 mb-4">
+        <form className="md:bg-slate-700/20 md:ring-1 md:ring-inset md:ring-white/10 md:shadow-2xl md:rounded-2xl px-8 pt-6 pb-8 mb-4">
         <div className="flex flex-col justify-center place-items-center">
           <h1 className="text-4xl font-semibold text-slate-200/95 py-6">Cutelinks</h1>
           <h5 className="pb-4 text-center">Cute, disposable links that <strong>expire after four hours.</strong> Death comes for us all. <a className="text-sky-400 hover:underline" href="https://github.com/flynnjh/cutelinks">View the source code on Github</a>.</h5>
@@ -78,18 +78,18 @@ export default function Home() {
             </button>
           </div>
           {info ? (
-            <div className="flex flex-col justify-center pt-6 font-semibold">
+            <div className="flex flex-col justify-center pt-6">
               <Link href={info.slug}><a>
-                <h1 className="text-sky-400 hover:underline">
+                <h1 className="text-sky-400 hover:underline font-semibold">
                   {info.slug} created successfully!
                 </h1>
               </a>
               </Link>
-                <h1 className="pt-4">
-                  Your pin for this slug is &apos;{info.pinReminder}&apos;.
+                <h1 className="pt-4 font-bold">
+                  Your pin for this slug is {info.pinReminder}.
                 </h1>
-                <h1 className="">
-                  You will need it if you want to manually delete your slug!
+                <h1 className="text-red-400 font-extrabold">
+                  Remember it if you want to manually delete your slug!
                 </h1>
             </div>
           ) : null}
