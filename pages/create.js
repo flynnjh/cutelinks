@@ -42,7 +42,7 @@ export default function Home() {
         <form className="bg-slate-700/20 ring-1 ring-inset ring-white/10 shadow-2xl rounded-2xl px-8 pt-6 pb-8 mb-4">
         <div className="flex flex-col justify-center place-items-center">
           <h1 className="text-4xl font-semibold text-slate-200/95 py-6">Cutelinks</h1>
-          <h5 className="pb-4 text-center">Cute, disposable links that <strong>expire after five hours.</strong> Death comes for us all.</h5>
+          <h5 className="pb-4 text-center">Cute, disposable links that <strong>expire after five hours.</strong> Death comes for us all. <a className="text-sky-400 hover:underline" href="https://github.com/flynnjh/cutelinks">View the source code on Github</a>.</h5>
           <h5 className="pb-4 text-center">Please report any shortlinks that link to abusive content to <a className="text-sky-400 hover:underline" href="https://twitter.com/distantsynths">@distantsynths</a> on Twitter.</h5>
         </div>
         <div className="flex flex-row text-lg justify-center font-bold text-sky-400/95 pb-4 gap-6 w-auto">
