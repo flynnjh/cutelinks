@@ -29,9 +29,9 @@ export default function DeletePage() {
     <Head>
       <title>Cutelinks</title>
     </Head>
-    <div className="flex flex-col h-screen justify-center place-items-center bg-slate-900/60">
+    <div className="flex flex-col h-screen justify-center place-items-center md:bg-slate-900/60 bg-[#1E2536]">
       <div className="w-full max-w-lg max-h-lg">
-        <form className="bg-slate-700/20 ring-1 ring-inset ring-white/10 shadow-2xl rounded-2xl px-8 pt-6 pb-8 mb-4">
+        <form className="md:bg-slate-700/20 md:ring-1 md:ring-inset md:ring-white/10 md:shadow-2xl md:rounded-2xl px-8 pt-6 pb-8 mb-4">
         <h1 className="flex justify-center text-4xl font-semibold text-slate-200/95 py-4 break-all">Delete your Cutelink</h1>
         <h1 className="flex justify-center text-2xl font-semibold text-slate-200/95 pb-4 break-all">:(</h1>
         <div className="flex flex-row text-lg justify-center font-bold text-sky-400/95 pb-4 gap-6 w-auto">
@@ -52,7 +52,7 @@ export default function DeletePage() {
               className="shadow appearance-none rounded w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline bg-base-100 ring-1 ring-inset ring-white/40"
               id="pin"
               type="text"
-              placeholder="Pin to your Slug (e.g. '30')..."
+              placeholder="Pin to your Slug (e.g. 30)..."
               onChange={(e) => setPin(e.target.value)}
             />
           </div>
@@ -66,14 +66,14 @@ export default function DeletePage() {
             </button>
           </div>
           {info ? (
-            <div className="flex flex-col justify-center pt-6 font-semibold">
+            <div className="flex flex-col justify-center place-items-center pt-6 font-semibold">
                 <h1 className="text-sky-400 hover:underline">
                   {info}
                 </h1>
             </div>
           ) : null}
 
-          {errorMessage ? <h1>{errorMessage}</h1> : null}
+          {errorMessage ? <h1 className="flex flex-col justify-center place-items-center pt-6 font-semibold text-red-400">{errorMessage}</h1> : null}
         </form>
       </div>
     </div>
